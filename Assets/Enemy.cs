@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
         laser.SetPosition(0, transform.position);
         laser.SetPosition(1, orientation.position);
 
-        if (Physics.Raycast(transform.position, transform.up, 1, map))
+        if (Physics.Raycast(transform.position, transform.up, 0.9f, map))
         {
             if (!Physics.Raycast(transform.position, transform.right, 3, map))
             {

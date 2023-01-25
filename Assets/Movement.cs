@@ -24,8 +24,8 @@ public class Movement : MonoBehaviour
         if (Input.GetKeyUp(button) && Time.timeSinceLevelLoad - timer < 0.1 && Time.timeSinceLevelLoad - timer > 0)
         {
             Debug.Log("Single Click");
-            transform.Rotate(0, 0, 90);
-            timer = 100000000;
+            transform.Rotate(0, 0, -90);
+            timer = Mathf.Infinity;
         }
 
         else if (Time.timeSinceLevelLoad - timer > 0.1 && Input.GetKey(button))
@@ -37,7 +37,7 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKeyUp(button))
         {
-            timer = 100000000;
+            timer = Mathf.Infinity;
         }
 
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,28 +8,24 @@ using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
+    public static event Action onPlayerDeath;
     public bool yAxis;
     public float speed = 3;
     public Rigidbody rb;
     public LayerMask map;
     public Transform orientation;
-    public GameObject deathScene;
-    float timer;
     //LineRenderer laser;
     // Start is called before the first frame update
     void Start()
     {
-        deathScene.SetActive(false);
+       //deathScene.SetActive(false);
         //laser = GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time - timer > 1)
-        {
-            SceneManager.LoadScene("Erics scen");
-        }
+
         if (yAxis)
         {
             //transform.Translate(Vector3.up * direction * speed * Time.deltaTime);
@@ -68,8 +65,7 @@ public class Enemy : MonoBehaviour
         {
             /*SceneManager.LoadScene("Erics scen");
             Debug.Log("ja");*/
-            deathScene.SetActive(true);
-            timer = Time.time;
+            onPlayerDeath?.Invoke();
         }
 
         else

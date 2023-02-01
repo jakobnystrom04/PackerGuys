@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class End : MonoBehaviour
 {
+    Scene scene;
     // Start is called before the first frame update
     void Start()
     {
-        
+        scene = SceneManager.GetActiveScene();
     }
 
     // Update is called once per frame
@@ -23,7 +24,7 @@ public class End : MonoBehaviour
         {
             /*UnityEditor.EditorApplication.isPlaying = false;
             Application.Quit();*/
-            SceneManager.LoadScene("Jakobs Scen");
+            SceneManager.LoadScene(scene.buildIndex + 1);
         }
     }
 }

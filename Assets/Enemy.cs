@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
+    string scene;
     //public static event Action onPlayerDeath;
     public bool yAxis;
     public float speed = 3;
@@ -18,6 +19,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
        //deathScene.SetActive(false);
         //laser = GetComponent<LineRenderer>();
     }
@@ -25,7 +27,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         if (yAxis)
         {
             //transform.Translate(Vector3.up * direction * speed * Time.deltaTime);
@@ -63,9 +65,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            /*SceneManager.LoadScene("Erics scen");
-            Debug.Log("ja");*/
-            //onPlayerDeath?.Invoke();
+            SceneManager.LoadScene("Level 1");
         }
 
         else

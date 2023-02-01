@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
-    public static event Action onPlayerDeath;
+    //public static event Action onPlayerDeath;
     public bool yAxis;
     public float speed = 3;
     public Rigidbody rb;
@@ -65,7 +65,7 @@ public class Enemy : MonoBehaviour
         {
             /*SceneManager.LoadScene("Erics scen");
             Debug.Log("ja");*/
-            onPlayerDeath?.Invoke();
+            //onPlayerDeath?.Invoke();
         }
 
         else

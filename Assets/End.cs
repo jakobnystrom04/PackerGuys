@@ -14,12 +14,15 @@ public class End : MonoBehaviour
     public Light2D playerLight;
     GameObject player;
     MeshRenderer playerRenderer;
+    bool hasWon = false;
+    AudioSource winMusic;
     // Start is called before the first frame update
     void Start()
     {
+        timer = Mathf.Infinity;
+        winMusic = GetComponent<AudioSource>();
         player = GameObject.Find("Player");
         playerRenderer = player.GetComponent<MeshRenderer>();
-        timer = Mathf.Infinity;
         scene = SceneManager.GetActiveScene();
         winPic.SetActive(false);
     }
@@ -27,7 +30,7 @@ public class End : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.time - timer > timeForPic)
+        if(Time.time-timer>4)
         {
             SceneManager.LoadScene(scene.buildIndex - 1);
         }
@@ -37,18 +40,22 @@ public class End : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-<<<<<<< Updated upstream
+
             /*UnityEditor.EditorApplication.isPlaying = false;
             Application.Quit();*/
-            SceneManager.LoadScene(scene.buildIndex - 1);
-=======
+            if (!winMusic.isPlaying)
+            {
+                winMusic.Play();
+            }
+            hasWon = true;
             Destroy(player);
             playerLight.intensity = 0;
             spotLight.intensity = 1;
             timer = Time.time;
             winPic.SetActive(true);
-            GetComponent<Movement>().enabled = false;
->>>>>>> Stashed changes
+            player.GetComponent<Movement>().enabled = false;
+            
+
         }
     }
 }

@@ -24,7 +24,7 @@ public class End : MonoBehaviour
         {
             /*UnityEditor.EditorApplication.isPlaying = false;
             Application.Quit();*/
-            SceneManager.LoadScene(scene.buildIndex + 1);
+            SceneManager.LoadScene(scene.buildIndex - 1);
         }
     }
 }

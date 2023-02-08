@@ -6,11 +6,12 @@ public class Movement : MonoBehaviour
 {
     float timer = 1000000000;
     public KeyCode button;
+    AudioSource stepSource;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        stepSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -32,6 +33,14 @@ public class Movement : MonoBehaviour
         {
             Debug.Log("Holding button");
             transform.Translate(Vector3.right * Time.deltaTime * 5);
+            if (!stepSource.isPlaying)
+            {
+                stepSource.Play();
+            }
+        }
+        else
+        {
+            stepSource.Stop();
         }
         
 
